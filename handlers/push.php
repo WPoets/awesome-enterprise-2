@@ -85,8 +85,6 @@ class awesome2_push_notification{
 					);
 		}
 		
-		util::var_dump($fields);
-		
 		$headers = array(
 					'Authorization: key=' . $this->google_api_key,
 					'Content-Type: application/json'
