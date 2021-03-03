@@ -70,11 +70,12 @@ class awesome2_push_notification{
 		if(empty($this->topic)){
 			$device_ids=explode(',',$this->push_device_tokens);
 
+			$d_push_message = json_decode($this->push_message,true);
 			$fields = array(
-						'registration_ids' => $device_ids,
-						'notification' => array("body"=> $this->push_message),
-						'data'=>array("data"=> $this->push_message)
-					);
+					'registration_ids' => $device_ids,
+					'notification' => $d_push_message,
+					'data' => array("message" => $d_push_message, "moredata" =>'')
+				);
 		}
 		else{
 			$fields = array(
@@ -83,8 +84,6 @@ class awesome2_push_notification{
 						'data'=>array("data"=> $this->push_message)
 					);
 		}
-		
-		util::var_dump($fields);
 		
 		$headers = array(
 					'Authorization: key=' . $this->google_api_key,
