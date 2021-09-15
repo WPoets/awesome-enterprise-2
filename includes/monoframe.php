@@ -73,6 +73,12 @@ class Monoframe
 		// use the action to create a place for your meta box
 	public function add_before_editor($post) {
 	  global $post;
+	   global $_wp_post_type_features;
+	  
+	  if(self::is_awesome_post_type($post)){
+		  unset( $_wp_post_type_features[ $post->post_type ][ 'editor' ]);
+	  }	  
+	  
 	  do_meta_boxes(get_current_screen(), 'monoframe_pre_editor', $post);
 	}
 	
