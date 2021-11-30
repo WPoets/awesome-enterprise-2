@@ -724,7 +724,7 @@ class aw2_apps_library{
 		$sql  = $wpdb->prepare(" SELECT MAX(p.post_modified_gmt) AS lastmod
 						FROM	$wpdb->posts AS p
 						WHERE post_status IN ('publish') AND post_type = %s ", 'aw2_app' );
-		$mod = $wpdb->get_var( $sql )." +00:00";
+		$mod = $wpdb->get_var( $sql )."+00:00";
 				
 		//$date = $wpseo_sitemaps->get_last_modified('aw2_app');
 		if(!class_exists(WPSEO_Date_Helper)){
