@@ -23,7 +23,7 @@ function set($atts,$content=null,$shortcode){
 	if($prefix)$key=$prefix . $key;
 	
 	$redis->set($key, $value);
-	$redis->setTimeout($key, $ttl*60);
+	$redis->expire($key, $ttl*60);
 	return;
 }
 
